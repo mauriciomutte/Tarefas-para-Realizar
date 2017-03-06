@@ -25,7 +25,7 @@ document.querySelector(".insereNovaNota").addEventListener("submit", function(ev
 	nota.appendChild(botaoCheck)
 
 	var imgCheck = document.createElement("img")
-	imgCheck.src = "assets/check.png"
+	imgCheck.src = "check.png"
 	imgCheck.classList.add("botaoCheck-img")
 	botaoCheck.appendChild(imgCheck)
 
@@ -42,7 +42,7 @@ document.querySelector(".insereNovaNota").addEventListener("submit", function(ev
 	nota.appendChild(botaoRemove)
 
 	var imgClose = document.createElement("img")
-	imgClose.src = "assets/close.png"
+	imgClose.src = "close.png"
 	imgClose.classList.add("botaoClose-img")
 	botaoRemove.appendChild(imgClose)
 
