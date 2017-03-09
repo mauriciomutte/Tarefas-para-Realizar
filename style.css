@@ -8,6 +8,10 @@ body {
 	background-color: #00a0d2;
 }
 
+.insereNovaNota-campo:focus ,
+.insereNovaNota-envia:focus {
+	outline: none;
+}
 /*MENU*/
 
 .menu {
