@@ -1,52 +1,81 @@
 var campo = document.querySelector(".insereNovaNota-campo")
 var mural = document.querySelector(".mural")
-var check = 0
+var taref = 3
+var nota = document.querySelector("ul")
+
+
+function noTaref() {
+	if (taref == 0) {
+		var noTaref = document.querySelector(".noTaref") 
+		noTaref.style.display = "block"
+	} else {
+		var noTaref = document.querySelector(".noTaref") 
+		noTaref.style.display = "none"
+	}
+}
 
 document.querySelector(".insereNovaNota").addEventListener("submit", function(event){
 	var conteudo = campo.value
 
-	var nota = document.createElement("div")
-	nota.classList.add("nota")
-
-	var notaConteudo = document.createElement("p")
-	notaConteudo.classList.add("nota-conteudo")
+	var notaConteudo = document.createElement("li")
 	notaConteudo.textContent = conteudo
+	taref ++
+	noTaref()
+	notaConteudo.onclick = function() {
+		notaConteudo.classList.add("chacked")
+	}
 	nota.appendChild(notaConteudo)
 
-	var botaoCheck = document.createElement("button")
-	botaoCheck.classList.add("botaoCheck")
-	botaoCheck.addEventListener("click", function(){
-		check = check + 1
-		nota.classList.add("nota--sumindo")
-		setTimeout(function(){
-			nota.remove()
-		}, 350)
-	})
-	nota.appendChild(botaoCheck)
 
-	var imgCheck = document.createElement("img")
-	imgCheck.src = "check.png"
-	imgCheck.classList.add("botaoCheck-img")
-	botaoCheck.appendChild(imgCheck)
+	var close = document.createElement("span")
+	var txt = document.createTextNode("\u00D7");
+	close.className = "close"
+	close.onclick = function () {
+		notaConteudo.remove()
+		taref --
+		noTaref()
+	}
 
+	close.appendChild(txt)
+	notaConteudo.appendChild(close)
 
-
-	var botaoRemove = document.createElement("button")
-	botaoRemove.classList.add("botaoRemove")
-	botaoRemove.addEventListener("click", function(){
-		nota.classList.add("nota--sumindo")
-		setTimeout(function(){
-			nota.remove()
-		}, 450)
-	})
-	nota.appendChild(botaoRemove)
-
-	var imgClose = document.createElement("img")
-	imgClose.src = "close.png"
-	imgClose.classList.add("botaoClose-img")
-	botaoRemove.appendChild(imgClose)
 
 	mural.appendChild(nota)
 	campo.value = ""
 	event.preventDefault()
+
+
 })
+
+
+
+var myNodelist = document.getElementsByTagName("LI");
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+
+}
+
+var close = document.getElementsByClassName("close");
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+    taref --
+	noTaref()
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+
+
