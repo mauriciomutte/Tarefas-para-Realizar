@@ -5,11 +5,6 @@
 	font-family: 'Lato', sans-serif;
 }
 
-body {
-	background: #02c8a7
-	/*background-color: #00a0d2;*/
-}
-
 .insereNovaNota-campo:focus ,
 .insereNovaNota-envia:focus {
 	outline: none;
